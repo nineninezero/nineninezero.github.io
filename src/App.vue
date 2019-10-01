@@ -21,16 +21,7 @@ export default {
 
   },
   watch:{
-    // 根据路由判断
-    $route(to,from){
-      let reg1=/.*about.*/
-      let reg2=/.*serve|cfb.*/
-      if(reg1.test(to.path)){
-        this.$store.state.home_actnum=3
-      }else if(reg2.test(to.path)){
-        this.$store.state.home_actnum=1
-      } 
-    }    
+ 
   }
 }
 </script>
@@ -45,7 +36,6 @@ export default {
   }
   a{
     text-decoration: none;
-    color: white;
     display: block;
   }
   ul{
@@ -60,8 +50,6 @@ export default {
     border: none;
   }
   button{
-    background-color: #1D4B96;
-    color: #fff;
     cursor: pointer;
   }
 
