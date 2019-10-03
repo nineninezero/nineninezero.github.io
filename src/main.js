@@ -6,7 +6,8 @@ import App from './App.vue'
 import jquery from './assets/js/jquery.min.js'
 import Router from './assets/vue-router'
 
-import Home from './views/Home.vue'
+import P_Home from './views/PC/P_Home.vue'
+import M_Home from './views/Mobile/M_Home.vue'
 import Qs from 'qs'
 window.jquery = jquery
 window.$ = jquery
@@ -35,16 +36,22 @@ const store = new Vuex.Store({
 // 路由
 const router = new Router({
     routes: [{
-        path: '/',
-        name: 'home',
-        component: Home,
-        redirect: '/shouye',
-        children: [{
-            path: 'shouye',
-            name: 'shouye',
-            component: resolve => require(['./views/Shouye.vue'], resolve)
-        }]
-    }]
+            path: '/p_home',
+            name: 'p_home',
+            component: P_Home
+        },
+        {
+            path: '/m_home',
+            name: 'm_home',
+            component: M_Home,
+            redirect: 'm_home/shouye',
+            children: [{
+                path: 'shouye',
+                name: 'shouye',
+                component: resolve => require(['./views/Mobile/Shouye.vue'], resolve)
+            }]
+        }
+    ]
 })
 
 // 全局导航守卫

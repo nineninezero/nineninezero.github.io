@@ -7,6 +7,13 @@
 <script>
 export default {
   name: 'App',
+  methods:{
+    //判断是否移动端
+    isMobile() {
+      let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+      return flag;
+    }
+  },
   created () {
     //在页面加载时读取sessionStorage里的状态信息
     if (sessionStorage.getItem("store") ) {
@@ -19,15 +26,28 @@ export default {
         console.log("页面刷新")        
     })
 
+    this.isMobile()
   },
-  watch:{
- 
+  mounted(){
+    if (this.isMobile()) {
+      console.log(this.$router)
+      this.$router.replace('/m_home');
+    } else {
+      console.log(this.$router)
+      this.$router.replace('/p_home');
+    }
   }
 }
 </script>
 
 
 <style>
+  html,body{
+    height: 100%;
+  }
+  #app{
+    height: 100%;
+  }
   *{
     padding: 0;
     margin: 0;
